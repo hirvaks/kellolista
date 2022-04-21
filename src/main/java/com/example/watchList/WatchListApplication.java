@@ -5,13 +5,20 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
 
 import com.example.watchList.domain.Watch;
 import com.example.watchList.domain.WatchRepository;
 
 @SpringBootApplication
-public class WatchListApplication {
+public class WatchListApplication extends SpringBootServletInitializer {
+	
+	@Override
+	 protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+	 return application.sources(WatchListApplication.class);
+	 }
 	
 	private static final Logger log = LoggerFactory.getLogger(WatchListApplication.class);
 
